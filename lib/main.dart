@@ -86,8 +86,8 @@ class _MyAppState extends State<MyApp> {
               debugShowCheckedModeBanner: false,
               title: '',
               theme: ThemeData.light(),
-              home:
-               isLoggedIn ? Dashboard() : const LoginPage(),
+              home: const SplashScreen()
+              //  isLoggedIn ? Dashboard() : const LoginPage(),
               );
         },
       ),

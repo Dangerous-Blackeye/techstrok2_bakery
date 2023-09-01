@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:techstrock2/dashboard/dashboard.dart';
-
 import 'package:flutter/material.dart';
 import 'package:techstrock2/loginpage/login.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -11,23 +11,40 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
- bool isLoggedIn =  true;
+  bool isLoggedIn = true;
 
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 5), () {
-      isLoggedIn ? Dashboard() : const LoginPage();
-
-
-
-    });
+    goToPage();
   }
+
+  goToPage() async {
+    await Future.delayed(
+      const Duration(seconds: 5),
+    );
+    if (mounted) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) {
+            return isLoggedIn ? Dashboard() : const LoginPage();
+          },
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey,
-      body: Center(child: Text('Bakery', style: TextStyle(color: Colors.black),),),
+      body: Center(
+        child: Text(
+          'Bakery',
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
     );
   }
 }
